@@ -2,9 +2,9 @@ import socket
 import json
 import sys
 import csv
-from progressbar import ProgressBar
-pbar = ProgressBar()
-
+import alive_progress
+from alive_progress import alive_bar
+import time
 
 def dns(input):
     flag=0
@@ -47,26 +47,29 @@ def startserver():
     exit()
 
 def refreshserverdata():
-    newdata = {} 
+    localdata={}
     l=[]
     with open('top500Domains.csv', 'r') as csv_file:
         reader = csv.reader(csv_file)
         for row in reader:
             name="".join(row[1])
             l.append(name)
-        # print(newdata)
-    error=0
-    for remote_host in pbar(l):
+    with alive_bar(len(l)) as bar:
+        for remote_host in l:
             remote_host = remote_host.strip() # \n (new line) at the end of the line would cause error even when host exists
+            # print(remote_host) 
             try:
                 addr=socket.gethostbyname(remote_host)
                 # print(f"And IP address is ",addr)
-                newdata[remote_host] = addr
+                localdata[remote_host] = addr
             except socket.gaierror as se:
-                error+=1
-    print("Server successfully refreshed")
-    file2 = open("data.json","w")
-    file2.write(json.dumps(newdata))
+                i=0
+                # print(f"Not done: {se}") # this will catch error when socket.gethostbyname
+            bar()
+            time.sleep(0.1)
+    file1 = open("data.json","w")
+    file1.write(json.dumps(localdata))
+    print("Successfully refreshed")
 
 # refreshserverdata()
 flag=1
