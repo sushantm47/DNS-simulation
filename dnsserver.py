@@ -6,7 +6,7 @@ import sys
 def dns(input):
     flag=0
     ##data stored locally
-    file1 = open("data.txt","r")
+    file1 = open("data.json","r")
     localdata = json.loads(file1.read())
     file1.close()
     ##checking if the requested site's ip exists locally
@@ -18,7 +18,7 @@ def dns(input):
     if(flag==0):        
         addr = socket.gethostbyname(input)
         localdata[input] = addr            ##adding data to local data
-    file1 = open("data.txt","w")
+    file1 = open("data.json","w")
     file1.write(json.dumps(localdata))
     file1.close()
     return(addr)
