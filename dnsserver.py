@@ -40,4 +40,4 @@ while True:
     print(result)
     c.send(bytes("".join(result),"utf-8"))
     c.close()
-    exit()
+exit()

@@ -11,16 +11,9 @@ l=[]
 with open('top500Domains.csv', 'r') as csv_file:
     reader = csv.reader(csv_file)
     for row in reader:
-        # file1 = open("data.json","w+")
         name="".join(row[1])
         l.append(name)
-        # print(len(name),"____",len(name.strip()))
-        # addr = socket.gethostbyname(name.strip())
-        # localdata[name] = addr
-        # file1.write(json.dumps(localdata))
-        # print(row)
     print(localdata)
-# print(l)
 
 for remote_host in l:
             remote_host = remote_host.strip() # \n (new line) at the end of the line would cause error even when host exists
