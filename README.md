@@ -10,5 +10,5 @@ local dns simulation using socket programing in python3
   
 ## commands to run 
   * `python backupdns.py 12345`
-  ###### start server then on initializing
+  ######    start the server then on initializing
   * 2) `python client 12345`
