@@ -54,7 +54,8 @@ def refreshserverdata():
         for row in reader:
             name="".join(row[1])
             l.append(name)
-    with alive_bar(len(l)) as bar:
+        t=0
+        print("Processing",end="\n")
         for remote_host in l:
             remote_host = remote_host.strip() # \n (new line) at the end of the line would cause error even when host exists
             # print(remote_host) 
@@ -64,11 +65,11 @@ def refreshserverdata():
                 localdata[remote_host] = addr
             except socket.gaierror as se:
                 i=0
-            bar()
-            time.sleep(0.1)
+            print((t/len(l))*100,end='\r')
+            t+=1    
     file1 = open("data.json","w")
     file1.write(json.dumps(localdata))
-    print("Successfully refreshed")
+    print("Dataset Successfully refreshed")
 
 # refreshserverdata()
 flag=1
