@@ -32,11 +32,14 @@ def startserver():
     print("Socket created")
     s.bind(('',port))
     print("socket binded to port",port)
-    s.listen(5)
+    s.listen(15)
     print("Socket is listening")
-
+    reset_data_count=0
     while True:
         c,addr = s.accept()
+        reset_data_count+=1
+        if(reset_data_count==5):
+            refreshserverdata()
         print("Connection received")
         data = c.recv(1024).decode()
         print(data)
@@ -55,7 +58,7 @@ def refreshserverdata():
             name="".join(row[1])
             l.append(name)
         t=0
-        print("Processing",end="\n")
+        print("Refreshing",end="\n")
         for remote_host in l:
             remote_host = remote_host.strip() # \n (new line) at the end of the line would cause error even when host exists
             # print(remote_host) 
@@ -70,6 +73,7 @@ def refreshserverdata():
     file1 = open("data.json","w")
     file1.write(json.dumps(localdata))
     print("Dataset Successfully refreshed")
+    return
 
 # refreshserverdata()
 flag=1
