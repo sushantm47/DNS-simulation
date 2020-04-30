@@ -1,14 +1,14 @@
 # DNS-simulation
 local dns simulation using socket programing in python3
-
+---
 ## Available server and client programs : 
   #### server: 
-  #### backupdns.py(with auto refresher after 5 requests)
-  ####         dnesrver.py
+  * backupdns.py(with auto refresher after 5 requests)
+  * dnesrver.py
   #### client:
-  #### client.py
+  * client.py
   
 ## commands to run 
-  ### 1) python backupdns.py 12345
-  #### start server then on initializing
-  ### 2) python client 12345
+  * `python backupdns.py 12345`
+  ###### start server then on initializing
+  * 2) `python client 12345`
