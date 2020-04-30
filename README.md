@@ -1,5 +1,5 @@
 # DNS-simulation
-local dns simulation using socket programing in python3
+### local dns simulation using socket programing in python3
 ---
 ## Available server and client programs : 
   #### server: 
