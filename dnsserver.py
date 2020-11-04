@@ -56,7 +56,7 @@ def refreshserverdata():
             l.append(name)
     with alive_bar(len(l)) as bar:
         for remote_host in l:
-            remote_host = remote_host.strip() # \n (new line) at the end of the line would cause error even when host exists
+            remote_host = remote_host.strip()
             # print(remote_host) 
             try:
                 addr=socket.gethostbyname(remote_host)
