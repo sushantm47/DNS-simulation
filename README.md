@@ -3,7 +3,7 @@
 ---
 ## Available server and client programs : 
   #### server: 
-  * backupdns.py(with auto refresher after 5 requests)
+  * backupdns.py (with auto refresher after 5 requests)
   * dnesrver.py
   #### client:
   * client.py
